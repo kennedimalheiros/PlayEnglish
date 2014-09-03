@@ -1,0 +1,28 @@
+{% extends "base_template.html" %}
+{% load bootstrap %}
+
+{% block conteudo %}
+
+    <h1>Welcome to game for learn english</h1>    
+
+    <div class="row">
+            {% if form %}
+                <div class="col-md-4">
+                    <br>
+                    <form method="POST" action="." class="form-group">
+                        {% csrf_token %}
+                        {{form|bootstrap}}
+                        <input type="submit" class="btn btn-primary"/>
+                    </form>
+                </div>
+            {% else %}
+            <div class="col-md-4">
+                    <br>
+                    <a href="{% url 'url_login' %}">
+                        <button type="button" class="btn btn-primary">Jogar</button>
+                    </a>
+            </div>
+            {% endif %}
+       </div>
+{% endblock %}
+
