@@ -70,12 +70,20 @@ DATABASES = {
 }
 
 
+# Arquivos de midia
+MEDIA_URL = "/site_media/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
 STATIC_URL = '/site_media/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'arquivosstaticospadrao'),
+)
 
 LANGUAGE_CODE = 'en-us'
 
@@ -90,8 +98,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
-
-STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'PlayEnglish/templates'),
