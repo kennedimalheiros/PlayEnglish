@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 
 
 def home(request):
     if request.user.is_authenticated():
-        return render(request, 'index.html', {})
+        return redirect('game_home')
     else:
         return redirect('url_login')
 

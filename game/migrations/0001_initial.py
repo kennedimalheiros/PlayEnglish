@@ -8,53 +8,54 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        # Adding model 'Language'
+        db.create_table(u'game_language', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('language_name', self.gf('django.db.models.fields.CharField')(max_length=500)),
+        ))
+        db.send_create_signal(u'game', ['Language'])
+
+        # Adding model 'Sentence'
+        db.create_table(u'game_sentence', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('language', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['game.Language'])),
+            ('original_text', self.gf('django.db.models.fields.TextField')()),
+            ('translate_text', self.gf('django.db.models.fields.TextField')()),
+            ('level', self.gf('django.db.models.fields.IntegerField')()),
+        ))
+        db.send_create_signal(u'game', ['Sentence'])
+
         # Adding model 'Player'
         db.create_table(u'game_player', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['auth.User'], unique=True)),
             ('level', self.gf('django.db.models.fields.IntegerField')()),
             ('points', self.gf('django.db.models.fields.IntegerField')()),
         ))
         db.send_create_signal(u'game', ['Player'])
 
-        # Adding model 'Language'
-        db.create_table(u'game_language', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('language_name', self.gf('django.db.models.fields.TextField')()),
+        # Adding M2M table for field sentences_unlocked on 'Player'
+        m2m_table_name = db.shorten_name(u'game_player_sentences_unlocked')
+        db.create_table(m2m_table_name, (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('player', models.ForeignKey(orm[u'game.player'], null=False)),
+            ('sentence', models.ForeignKey(orm[u'game.sentence'], null=False))
         ))
-        db.send_create_signal(u'game', ['Language'])
-
-        # Adding model 'BankOfSentences'
-        db.create_table(u'game_bankofsentences', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('language', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['game.Language'])),
-            ('original_text', self.gf('django.db.models.fields.CharField')(max_length=500)),
-            ('translate_text', self.gf('django.db.models.fields.CharField')(max_length=500)),
-            ('level', self.gf('django.db.models.fields.IntegerField')()),
-        ))
-        db.send_create_signal(u'game', ['BankOfSentences'])
-
-        # Adding model 'SentenceUnlock'
-        db.create_table(u'game_sentenceunlock', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('player', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['game.Player'])),
-            ('sentence', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['game.BankOfSentences'])),
-        ))
-        db.send_create_signal(u'game', ['SentenceUnlock'])
+        db.create_unique(m2m_table_name, ['player_id', 'sentence_id'])
 
 
     def backwards(self, orm):
-        # Deleting model 'Player'
-        db.delete_table(u'game_player')
-
         # Deleting model 'Language'
         db.delete_table(u'game_language')
 
-        # Deleting model 'BankOfSentences'
-        db.delete_table(u'game_bankofsentences')
+        # Deleting model 'Sentence'
+        db.delete_table(u'game_sentence')
 
-        # Deleting model 'SentenceUnlock'
-        db.delete_table(u'game_sentenceunlock')
+        # Deleting model 'Player'
+        db.delete_table(u'game_player')
+
+        # Removing M2M table for field sentences_unlocked on 'Player'
+        db.delete_table(db.shorten_name(u'game_player_sentences_unlocked'))
 
 
     models = {
@@ -94,31 +95,26 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        u'game.bankofsentences': {
-            'Meta': {'object_name': 'BankOfSentences'},
-            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['game.Language']"}),
-            'level': ('django.db.models.fields.IntegerField', [], {}),
-            'original_text': ('django.db.models.fields.CharField', [], {'max_length': '500'}),
-            'translate_text': ('django.db.models.fields.CharField', [], {'max_length': '500'})
-        },
         u'game.language': {
             'Meta': {'object_name': 'Language'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'language_name': ('django.db.models.fields.TextField', [], {})
+            'language_name': ('django.db.models.fields.CharField', [], {'max_length': '500'})
         },
         u'game.player': {
             'Meta': {'object_name': 'Player'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'level': ('django.db.models.fields.IntegerField', [], {}),
             'points': ('django.db.models.fields.IntegerField', [], {}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})
+            'sentences_unlocked': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['game.Sentence']", 'symmetrical': 'False'}),
+            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['auth.User']", 'unique': 'True'})
         },
-        u'game.sentenceunlock': {
-            'Meta': {'object_name': 'SentenceUnlock'},
+        u'game.sentence': {
+            'Meta': {'object_name': 'Sentence'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'player': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['game.Player']"}),
-            'sentence': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['game.BankOfSentences']"})
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['game.Language']"}),
+            'level': ('django.db.models.fields.IntegerField', [], {}),
+            'original_text': ('django.db.models.fields.TextField', [], {}),
+            'translate_text': ('django.db.models.fields.TextField', [], {})
         }
     }
 

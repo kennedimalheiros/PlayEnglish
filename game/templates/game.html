@@ -1,0 +1,28 @@
+{% extends "base_template.html" %}
+
+{% block conteudo %}
+
+    <div class="row">
+        <a class="btn btn-danger" href="{% url 'url_logout' %}">Logout</a>
+        <a class="btn btn-info" href="{% url 'game_play' %}">Play</a>
+        {% if message %}
+            {{message}}
+        {% endif %}
+
+        <div class="col-sm-6">
+        <h3>Olá Player {{player.user.username}}</h3>
+        Até o momento você possui: {{player.points}}<br>
+        Seu level é: {{player.get_level}}<br>
+        </div>
+
+        <div class="col-sm-6">
+        {% for word in list_words %}
+            {{word.original_text}} - {{word.translate_text}}<br>
+        {% endfor %}
+	    <a class="btn btn-success" href="{% url 'get_new_sentence' %}">Get new sentence</a>
+    	</div>
+
+    </div>
+
+{% endblock %}
+

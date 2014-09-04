@@ -1,7 +1,6 @@
 from django.contrib import admin
-from models import BankOfSentences, Language, Player, SentenceUnlock
+from models import Sentence, Language, Player
 
-admin.site.register(BankOfSentences)
+admin.site.register(Sentence)
 admin.site.register(Language)
 admin.site.register(Player)
-admin.site.register(SentenceUnlock)

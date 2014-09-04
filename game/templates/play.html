@@ -3,26 +3,21 @@
 {% block conteudo %}
 
     <div class="row">
-    	{% if message %}
-    		{{message}}
-    	{% endif %}
+        <a class="btn btn-danger" href="{% url 'home' %}">Home</a>
+        {% if message %}
+            {{message}}
+        {% endif %}
 
-    	<div class="col-sm-6">
-	    <h1>Welcome to game for learn english - Game Pade</h1>    
-	    <h3>Olá Player {{player.user.username}}</h3>
-	    Até o momento você possui: {{player.points}}<br>
-	    Seu level é: {{player.get_level}}<br>
-    	</div>
-
-    	<div class="col-sm-6">
-	    {% for word in list_words %}
-	    	{{word.sentence}}
-	    {% endfor %}
-	    <a class="btn btn-main" href="{% url 'get_new_sentence' %}">Get new sentence</a>
-    	</div>
+        <div class="col-sm-6">
+            <form method="POST" action="{% url 'game_correct' option.id %}">
+                {% csrf_token %}
+                {{option.original_text}}<br>
+                <input type="text" id='answer' name="answer" autofocus>
+                <button type="submit" class="btn btn-info">Test</button>
+            </form>
+        </div>
 
     </div>
 
- 
 {% endblock %}
 
