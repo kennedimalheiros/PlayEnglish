@@ -69,6 +69,11 @@ DATABASES = {
     }
 }
 
+
+STATIC_URL = '/site_media/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
