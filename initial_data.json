@@ -1,0 +1,543 @@
+[
+{
+ "pk": 1, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "logentry", 
+  "name": "log entry", 
+  "app_label": "admin"
+ }
+},
+{
+ "pk": 2, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "permission", 
+  "name": "permission", 
+  "app_label": "auth"
+ }
+},
+{
+ "pk": 3, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "group", 
+  "name": "group", 
+  "app_label": "auth"
+ }
+},
+{
+ "pk": 4, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "user", 
+  "name": "user", 
+  "app_label": "auth"
+ }
+},
+{
+ "pk": 5, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "contenttype", 
+  "name": "content type", 
+  "app_label": "contenttypes"
+ }
+},
+{
+ "pk": 6, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "session", 
+  "name": "session", 
+  "app_label": "sessions"
+ }
+},
+{
+ "pk": 7, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "migrationhistory", 
+  "name": "migration history", 
+  "app_label": "south"
+ }
+},
+{
+ "pk": 8, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "language", 
+  "name": "language", 
+  "app_label": "game"
+ }
+},
+{
+ "pk": 9, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "sentence", 
+  "name": "sentence", 
+  "app_label": "game"
+ }
+},
+{
+ "pk": 10, 
+ "model": "contenttypes.contenttype", 
+ "fields": {
+  "model": "player", 
+  "name": "player", 
+  "app_label": "game"
+ }
+},
+{
+ "pk": "3u2wtvsx69tyoar75iptq3pbncemfsf9", 
+ "model": "sessions.session", 
+ "fields": {
+  "expire_date": "2014-09-18T03:27:18.216Z", 
+  "session_data": "ZjIwMDMwMjYxZWYzYmQyN2IzMzNmOTA2OWNkN2JlZWIyNmI0NjM5MDp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6MX0="
+ }
+},
+{
+ "pk": "q5ttjvn4i3zaec6c60154o2r06yqtapi", 
+ "model": "sessions.session", 
+ "fields": {
+  "expire_date": "2014-09-18T03:27:11.395Z", 
+  "session_data": "MGMwYzg0OTc5NzI4ODY3YzFhZDBkOTJlZjg4ZDRjNzU1MzdhZTUzODp7fQ=="
+ }
+},
+{
+ "pk": 1, 
+ "model": "south.migrationhistory", 
+ "fields": {
+  "applied": "2014-09-04T03:27:05.733Z", 
+  "app_name": "game", 
+  "migration": "0001_initial"
+ }
+},
+{
+ "pk": 1, 
+ "model": "game.language", 
+ "fields": {
+  "language_name": "English"
+ }
+},
+{
+ "pk": 1, 
+ "model": "game.sentence", 
+ "fields": {
+  "original_text": "I", 
+  "translate_text": "Eu", 
+  "language": 1, 
+  "level": 1
+ }
+},
+{
+ "pk": 2, 
+ "model": "game.sentence", 
+ "fields": {
+  "original_text": "He", 
+  "translate_text": "Ele", 
+  "language": 1, 
+  "level": 1
+ }
+},
+{
+ "pk": 3, 
+ "model": "game.sentence", 
+ "fields": {
+  "original_text": "She", 
+  "translate_text": "Els", 
+  "language": 1, 
+  "level": 1
+ }
+},
+{
+ "pk": 4, 
+ "model": "game.sentence", 
+ "fields": {
+  "original_text": "You", 
+  "translate_text": "Voc\u00ea", 
+  "language": 1, 
+  "level": 1
+ }
+},
+{
+ "pk": 1, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_logentry", 
+  "name": "Can add log entry", 
+  "content_type": 1
+ }
+},
+{
+ "pk": 2, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_logentry", 
+  "name": "Can change log entry", 
+  "content_type": 1
+ }
+},
+{
+ "pk": 3, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_logentry", 
+  "name": "Can delete log entry", 
+  "content_type": 1
+ }
+},
+{
+ "pk": 4, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_permission", 
+  "name": "Can add permission", 
+  "content_type": 2
+ }
+},
+{
+ "pk": 5, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_permission", 
+  "name": "Can change permission", 
+  "content_type": 2
+ }
+},
+{
+ "pk": 6, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_permission", 
+  "name": "Can delete permission", 
+  "content_type": 2
+ }
+},
+{
+ "pk": 7, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_group", 
+  "name": "Can add group", 
+  "content_type": 3
+ }
+},
+{
+ "pk": 8, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_group", 
+  "name": "Can change group", 
+  "content_type": 3
+ }
+},
+{
+ "pk": 9, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_group", 
+  "name": "Can delete group", 
+  "content_type": 3
+ }
+},
+{
+ "pk": 10, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_user", 
+  "name": "Can add user", 
+  "content_type": 4
+ }
+},
+{
+ "pk": 11, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_user", 
+  "name": "Can change user", 
+  "content_type": 4
+ }
+},
+{
+ "pk": 12, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_user", 
+  "name": "Can delete user", 
+  "content_type": 4
+ }
+},
+{
+ "pk": 13, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_contenttype", 
+  "name": "Can add content type", 
+  "content_type": 5
+ }
+},
+{
+ "pk": 14, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_contenttype", 
+  "name": "Can change content type", 
+  "content_type": 5
+ }
+},
+{
+ "pk": 15, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_contenttype", 
+  "name": "Can delete content type", 
+  "content_type": 5
+ }
+},
+{
+ "pk": 16, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_session", 
+  "name": "Can add session", 
+  "content_type": 6
+ }
+},
+{
+ "pk": 17, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_session", 
+  "name": "Can change session", 
+  "content_type": 6
+ }
+},
+{
+ "pk": 18, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_session", 
+  "name": "Can delete session", 
+  "content_type": 6
+ }
+},
+{
+ "pk": 19, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_migrationhistory", 
+  "name": "Can add migration history", 
+  "content_type": 7
+ }
+},
+{
+ "pk": 20, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_migrationhistory", 
+  "name": "Can change migration history", 
+  "content_type": 7
+ }
+},
+{
+ "pk": 21, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_migrationhistory", 
+  "name": "Can delete migration history", 
+  "content_type": 7
+ }
+},
+{
+ "pk": 22, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_language", 
+  "name": "Can add language", 
+  "content_type": 8
+ }
+},
+{
+ "pk": 23, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_language", 
+  "name": "Can change language", 
+  "content_type": 8
+ }
+},
+{
+ "pk": 24, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_language", 
+  "name": "Can delete language", 
+  "content_type": 8
+ }
+},
+{
+ "pk": 25, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_sentence", 
+  "name": "Can add sentence", 
+  "content_type": 9
+ }
+},
+{
+ "pk": 26, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_sentence", 
+  "name": "Can change sentence", 
+  "content_type": 9
+ }
+},
+{
+ "pk": 27, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_sentence", 
+  "name": "Can delete sentence", 
+  "content_type": 9
+ }
+},
+{
+ "pk": 28, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "add_player", 
+  "name": "Can add player", 
+  "content_type": 10
+ }
+},
+{
+ "pk": 29, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "change_player", 
+  "name": "Can change player", 
+  "content_type": 10
+ }
+},
+{
+ "pk": 30, 
+ "model": "auth.permission", 
+ "fields": {
+  "codename": "delete_player", 
+  "name": "Can delete player", 
+  "content_type": 10
+ }
+},
+{
+ "pk": 1, 
+ "model": "auth.user", 
+ "fields": {
+  "username": "gpzim98", 
+  "first_name": "", 
+  "last_name": "", 
+  "is_active": true, 
+  "is_superuser": true, 
+  "is_staff": true, 
+  "last_login": "2014-09-04T03:27:18.207Z", 
+  "groups": [], 
+  "user_permissions": [], 
+  "password": "pbkdf2_sha256$12000$LssY8Wuvi25i$cEEVNnNwYrI33Bm+Fj1RB44wduMyZVgtevah8mBaJTw=", 
+  "email": "asdf@asdf.com", 
+  "date_joined": "2014-09-04T03:26:58.519Z"
+ }
+},
+{
+ "pk": 1, 
+ "model": "game.player", 
+ "fields": {
+  "sentences_unlocked": [
+   1, 
+   2
+  ], 
+  "points": 10, 
+  "user": 1, 
+  "level": 1
+ }
+},
+{
+ "pk": 1, 
+ "model": "admin.logentry", 
+ "fields": {
+  "action_flag": 1, 
+  "action_time": "2014-09-04T03:27:37.018Z", 
+  "object_repr": "English", 
+  "object_id": "1", 
+  "change_message": "", 
+  "user": 1, 
+  "content_type": 8
+ }
+},
+{
+ "pk": 2, 
+ "model": "admin.logentry", 
+ "fields": {
+  "action_flag": 1, 
+  "action_time": "2014-09-04T03:27:40.315Z", 
+  "object_repr": "English/ I/Eu", 
+  "object_id": "1", 
+  "change_message": "", 
+  "user": 1, 
+  "content_type": 9
+ }
+},
+{
+ "pk": 3, 
+ "model": "admin.logentry", 
+ "fields": {
+  "action_flag": 1, 
+  "action_time": "2014-09-04T03:27:46.125Z", 
+  "object_repr": "English/ He/Ele", 
+  "object_id": "2", 
+  "change_message": "", 
+  "user": 1, 
+  "content_type": 9
+ }
+},
+{
+ "pk": 4, 
+ "model": "admin.logentry", 
+ "fields": {
+  "action_flag": 1, 
+  "action_time": "2014-09-04T03:27:47.578Z", 
+  "object_repr": "gpzim98", 
+  "object_id": "1", 
+  "change_message": "", 
+  "user": 1, 
+  "content_type": 10
+ }
+},
+{
+ "pk": 5, 
+ "model": "admin.logentry", 
+ "fields": {
+  "action_flag": 1, 
+  "action_time": "2014-09-04T03:28:04.025Z", 
+  "object_repr": "English/ She/Els", 
+  "object_id": "3", 
+  "change_message": "", 
+  "user": 1, 
+  "content_type": 9
+ }
+},
+{
+ "pk": 6, 
+ "model": "admin.logentry", 
+ "fields": {
+  "action_flag": 1, 
+  "action_time": "2014-09-04T03:28:13.688Z", 
+  "object_repr": "English/ You/Voc\u00ea", 
+  "object_id": "4", 
+  "change_message": "", 
+  "user": 1, 
+  "content_type": 9
+ }
+}
+]
