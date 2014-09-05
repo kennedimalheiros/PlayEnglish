@@ -82,7 +82,7 @@ STATIC_URL = '/site_media/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'arquivosstaticospadrao'),
+    os.path.join(BASE_DIR, 'default_static_files'),
 )
 
 LANGUAGE_CODE = 'en-us'

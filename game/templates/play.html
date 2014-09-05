@@ -1,13 +1,9 @@
 {% extends "base_template.html" %}
 
 {% block conteudo %}
-
+     {% include 'scout.html' %}
     <div class="row">
-        <a class="btn btn-danger" href="{% url 'home' %}">Home</a>
-        {% if message %}
-            {{message}}
-        {% endif %}
-
+        <!--<a class="btn btn-danger" href="{% url 'game_gera_nova_lista' %}">Gera nova lista</a>-->
         <div class="col-sm-6">
             <form method="POST" action="{% url 'game_correct' option.id %}">
                 {% csrf_token %}
@@ -16,8 +12,18 @@
                 <button type="submit" class="btn btn-info">Test</button>
             </form>
         </div>
+        <br>
+        <br>
+        <br>
 
     </div>
+        {% if status %}
+            <img src="{{MEDIA_URL}}yes.jpg" width="200px" height="200px">
+        {% elif status == False %}
+            <img src="{{MEDIA_URL}}no.jpg"  width="200px" height="200px">
+        {% else %}
+            <img src="{{MEDIA_URL}}ready.jpg"  width="70%" height="20%">
+        {% endif %}
 
 {% endblock %}
 

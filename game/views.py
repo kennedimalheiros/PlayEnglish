@@ -1,6 +1,8 @@
+# encoding: utf8
 from django.shortcuts import render
-from models import Player, Sentence
+from models import Player, Sentence, Language
 import random
+from utils import remover_acentos
 
 
 def home(request, dados={}):
@@ -23,8 +25,10 @@ def get_new_sentence(request):
 
 
 def play(request, dados={}):
+    player = Player.objects.get(user=request.user)
+    dados['player'] = player
     dados['option'] = random.choice(
-        Player.objects.get(user=request.user).sentences_unlocked.all())
+        player.sentences_unlocked.all())
     return render(request, 'play.html', dados)
 
 
@@ -33,10 +37,23 @@ def correct(request, id):
     player = Player.objects.get(user=request.user)
     sentence = Sentence.objects.get(id=id)
     answer = request.POST.get('answer')
-    if answer == sentence.translate_text:
+    if answer.lower() in \
+            sentence.translate_text.lower().replace(',', ' ').split():
         player.add_point
-        dados['message'] = 'Congratulations'
+        dados['status'] = True
     else:
-        dados['message'] = 'Fail'
+        dados['status'] = False
 
     return play(request, dados)
+
+
+def gera_nova_lista(request):
+    f = open('list_words.txt', 'r')
+    string = ''
+    lang = Language.objects.get(id=1)
+    for i in f.readlines():
+        string = i.split()
+        sent = Sentence(
+            language=lang, original_text=string[1],
+            translate_text=string[3], level=1)
+        sent.save()

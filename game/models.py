@@ -1,3 +1,4 @@
+# encoding: utf8
 from django.db import models
 from django.contrib.auth.admin import User
 
@@ -31,9 +32,9 @@ class Player(models.Model):
 
     @property
     def get_level(self):
-        if self.level == 1:
+        if self.points <= 100:
             return 'Begginer'
-        elif self.level == 2:
+        elif self.level <= 300:
             return 'Junior'
         else:
             return 'Veteran'
@@ -61,5 +62,11 @@ class Player(models.Model):
 
     @property
     def add_point(self):
-        self.points += self.level
+        if self.get_level == 'Begginer':
+            self.points += 2
+        elif self.get_level == 'Junior':
+            self.points += 4
+        else:
+            self.points += 9
+
         self.save()
