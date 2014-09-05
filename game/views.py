@@ -42,6 +42,7 @@ def correct(request, id):
         player.add_point
         dados['status'] = True
     else:
+        player.remove_point
         dados['status'] = False
 
     return play(request, dados)

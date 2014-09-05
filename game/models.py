@@ -70,3 +70,14 @@ class Player(models.Model):
             self.points += 9
 
         self.save()
+
+    @property
+    def remove_point(self):
+        if self.get_level == 'Begginer':
+            self.points -= 2
+        elif self.get_level == 'Junior':
+            self.points -= 4
+        else:
+            self.points -= 9
+
+        self.save()
